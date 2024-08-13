@@ -1,25 +1,3 @@
-#!/bin/bash
-
-
-# Task 7: Replace the route 100-hbnb with 101-hbnb and create the corresponding files
-# -----------------------------------------------------------------------------
-# Copy and rename 100-hbnb.py to 101-hbnb.py
-cp web_dynamic/100-hbnb.py web_dynamic/101-hbnb.py
-
-# Replace the route /100-hbnb/ with /101-hbnb/ in 101-hbnb.py
-sed -i "s|/100-hbnb/|/101-hbnb/|g" web_dynamic/101-hbnb.py
-
-# Copy and rename 100-hbnb.html to 101-hbnb.html
-cp web_dynamic/templates/100-hbnb.html web_dynamic/templates/101-hbnb.html
-
-# Update 101-hbnb.html: Import the 101-hbnb.js script instead of 100-hbnb.js
-sed -i "s|static/scripts/100-hbnb.js|static/scripts/101-hbnb.js|g" web_dynamic/templates/101-hbnb.html
-
-# Add span element to the right of the Reviews H2 with value "show"
-sed -i '/<h2>Reviews<\/h2>/a <span class="toggle_reviews" style="float:right; cursor:pointer;">show</span>' web_dynamic/templates/101-hbnb.html
-
-# Create the 101-hbnb.js script
-cat <<'EOF' > web_dynamic/static/scripts/101-hbnb.js
 $(document).ready(function() {
     let selectedAmenities = {};
     let selectedStates = {};
@@ -125,7 +103,3 @@ $(document).ready(function() {
         $reviewsSection.toggle();
     });
 });
-EOF
-
-echo "Tasks 6 and 7 have been completed successfully."
-
