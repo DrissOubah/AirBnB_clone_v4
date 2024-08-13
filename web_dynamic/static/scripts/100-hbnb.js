@@ -1,27 +1,3 @@
-#!/bin/bash
-
-# Navigate to the project directory
-
-# Task 6: Replace the route 4-hbnb with 100-hbnb and create the corresponding files
-# -----------------------------------------------------------------------------
-# Copy and rename 4-hbnb.py to 100-hbnb.py
-cp web_dynamic/4-hbnb.py web_dynamic/100-hbnb.py
-
-# Replace the route /4-hbnb/ with /100-hbnb/ in 100-hbnb.py
-sed -i "s|/4-hbnb/|/100-hbnb/|g" web_dynamic/100-hbnb.py
-
-# Copy and rename 4-hbnb.html to 100-hbnb.html
-cp web_dynamic/templates/4-hbnb.html web_dynamic/templates/100-hbnb.html
-
-# Update 100-hbnb.html: Import the 100-hbnb.js script instead of 4-hbnb.js
-sed -i "s|static/scripts/4-hbnb.js|static/scripts/100-hbnb.js|g" web_dynamic/templates/100-hbnb.html
-
-# Add input checkboxes to State and City <li> tags with appropriate data attributes
-sed -i '/<li data-id="{{ state.id }}" data-name="{{ state.name }}">/a <input type="checkbox" data-id="{{ state.id }}" data-name="{{ state.name }}" style="margin-left: 10px;">' web_dynamic/templates/100-hbnb.html
-sed -i '/<li data-id="{{ city.id }}" data-name="{{ city.name }}">/a <input type="checkbox" data-id="{{ city.id }}" data-name="{{ city.name }}" style="margin-left: 10px;">' web_dynamic/templates/100-hbnb.html
-
-# Create the 100-hbnb.js script
-cat <<'EOF' > web_dynamic/static/scripts/100-hbnb.js
 $(document).ready(function() {
     let selectedAmenities = {};
     let selectedStates = {};
@@ -104,4 +80,3 @@ $(document).ready(function() {
         });
     });
 });
-EOF
